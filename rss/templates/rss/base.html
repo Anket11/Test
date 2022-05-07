@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Hackwage - {% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
+
+    {% include "rss/head.html" %}
+</head>
+
+<body>
+
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">Add some information about the album below, the author, or any other
+                        background context. Make it a few sentences long so folks can pick up some informative
+                        tidbits.
+                        Then, link them off to some social networking sites or contact information.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="navbar back shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <span class="logo">hackwage</span>
+                <blink class="blink" style="color: #73d216; font-size: 32px; font-family: SansSerif">&nbsp;▒</blink>
+            </a>
+            {% include "rss/nav.html" %}
+        </div>
+    </div>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="footer bg-light py-5" style="margin-top:60px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-12">
+                <h5>About</h5>
+                <p>
+                    By
+                    <a href="https://www.toptal.com/resume/claudio-santini#employ-just-quality-engineers-today">
+                        Claudio Santini
+                    </a>
+                    (<a href="mailto:hackwage+web@gmail.com">email</a>)</span> © 2019.
+                </p>
+                <p>
+                    This site uses <a href="https://hackwage.com">Hackwage.com</a> engine, built with
+                    the amazing Django Framework, NodeJS, and ElasticSearch.
+                    The sourcecode <a href="https://github.com/santinic/hackwage">is distributed on GitHub</a>,
+                    under the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL3 License</a>.
+                </p>
+            </div>
+            <div class="col-md-2 col-6">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/santinic/hackwage/">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="/post-a-job/">Post A Job</a>
+                    </li>
+                    <li>
+                        <a href="/data-sources/">Data Sources</a>
+                    </li>
+                    <li>
+                        <a href="/feedback/">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-6">
+                <h5>Popular Searches</h5>
+                <ul class="list-unstyled">
+                    {% for popular in POPULAR %}
+                        <li>
+                            <a href="/popular/{{ popular.name|slugify }}/?q={{ popular.search }}">
+                                {{ popular.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
